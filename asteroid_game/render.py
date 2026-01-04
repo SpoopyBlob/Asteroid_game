@@ -10,7 +10,7 @@ class Render():
         
 
     def draw(self, state):
-        self.screen.fill((201, 248, 253))
+        self.screen.fill((0, 0, 0))
 
         for sprite_id, metadate in state.items():
             if "spaceship" in sprite_id or "shot" in sprite_id:

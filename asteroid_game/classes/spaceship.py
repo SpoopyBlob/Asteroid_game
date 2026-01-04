@@ -6,12 +6,13 @@ from asteroid_game.classes.shot import Shot
 class Spaceship(Entity):
     def __init__(self):
         super().__init__()
-        self.sprite_id = "spaceship" + self.sprite_id
+        self.sprite_id = "spaceship_" + self.sprite_id
         self.rotation = 0
         self.acceleration = 0
         self.shot_cooldown = 0
 
     def update(self, dt):
+        super().update(dt)
         keys = pygame.key.get_pressed()
         self.shot_cooldown -= dt
 
@@ -44,3 +45,12 @@ class Spaceship(Entity):
         if self.shot_cooldown < 0:
             self.shot_cooldown = SHOT_COOLDOWN
             Shot(self.rotation)
+
+    def collision(self, other):
+        if self.col_exempt > 0:
+            return
+        else:
+            self.col_exempt = COL_EXEMPT
+            
+        if "asteroid" in other.sprite_id:
+            return "kill"

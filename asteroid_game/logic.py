@@ -9,7 +9,7 @@ class Logic():
 
     def update(self, state, dt):
         #retrieves and modifies behaviour from entity manager and calculates new x y
-        #state = self.collision_calc(state.copy())
+        state = self.collision_calc(state.copy())
         
         #clears sprites no longer in use
         state = self.clear_inactive_entities(state.copy())
@@ -64,16 +64,42 @@ class Logic():
         
         return state
     
-    def get_collisions(self, state):
+    def col_check(self, state):
         col = []
         for sprite_id in state:
             if state[sprite_id].col_type != "n/a":
-                col.append(sprite_id, state[sprite_id].col_type)
-
+                if not (state[sprite_id].col_type, sprite_id) in col:
+                    col.append((sprite_id, state[sprite_id].col_type))
+                state[sprite_id].col_type = "n/a"
+                                              
         return col
     
     def collision_calc(self, state):
-        col = self.get_collisions(state)
+        col = self.col_check(state)
+        if len(col) == 0:
+            return state
+        
+        split, kill = self.entity_manager.handle_sprite_collisions(col)
+        
+        if split != None:
+            for sprites in split:
+            
+                state[sprites[0]].alive = False
+                pos_x = state[sprites[0]].pos.x
+                pos_y = state[sprites[0]].pos.y
+            
+                s_1 = self.create_obj(sprites[1], pos_x + 30, pos_y + 30)
+                s_2 = self.create_obj(sprites[2], pos_x - 30, pos_y - 30)
+
+                state[sprites[1]] = s_1
+                state[sprites[2]] = s_2
+            
+        for sprite_id in kill:
+            state[sprite_id].alive = False
+
+        
+
+        return state
 
                 
 

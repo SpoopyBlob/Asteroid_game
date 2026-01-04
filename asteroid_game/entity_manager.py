@@ -41,8 +41,42 @@ class Entity_Manager():
                 self.entities.remove(entity)
                 del entity
            
-    def handle_sprite_collision():
-        pass
+    def handle_sprite_collisions(self, col):
+        #split_collisions is when an asteroid splits into two
+        #we need to communicate with the logic module in this cirumstance as we need to alter the .pos vector in state
+        #same goes for sprites_to_kill, we need to comunicate with state
+        split_collisions = []
+        sprites_to_kill = set()
+        
+        for sprite in col:
+            sprite_1 = self.player.find_sprite(sprite[0])
+            sprite_2 = self.player.find_sprite(sprite[1])
+
+            event_1 = sprite_1.collision(sprite_2)
+            event_2 = sprite_2.collision(sprite_1)
+
+            if event_1 == "kill":
+                sprites_to_kill.add(sprite_1.sprite_id)
+            elif event_1 != None:
+                split_collisions.append(event_1)
+                sprites_to_kill.add(sprite_1.sprite_id)
+
+            if event_2 == "kill":
+                sprites_to_kill.add(sprite_2.sprite_id)
+            elif event_2 != None:
+                split_collisions.append(event_2)
+                sprites_to_kill.add(sprite_2.sprite_id)
+                                                      
+        for sprite_id in sprites_to_kill:
+            
+            sprite = self.player.find_sprite(sprite_id)
+            sprite.kill()
+
+        return tuple(split_collisions), tuple(sprites_to_kill)
+
+            
+            
+
     
 
 

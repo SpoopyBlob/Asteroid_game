@@ -20,6 +20,10 @@ class State():
     def set_state(self, updated_state):
         self.state_dict = updated_state
 
+        #temp
+        for a, s in self.state_dict.items():
+            print(s.id + s.col_type)
+
     
 
     

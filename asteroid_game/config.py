@@ -2,8 +2,11 @@
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 
+"""Sprites"""
+COL_EXEMPT = 1
+
 """Asteroid"""
-ASTEROID_SPAWN_RATE = 2
+ASTEROID_SPAWN_RATE = 1
 
 """Player"""
 SHOT_COOLDOWN = 0.2

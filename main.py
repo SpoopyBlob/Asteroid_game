@@ -1,3 +1,7 @@
+#finish collision handles
+#write unit tests for collisions, logic, state (if possible), assets and render
+
+
 import pygame
 from asteroid_game.state import State
 from asteroid_game.render import Render
@@ -27,6 +31,7 @@ def main():
         data = state.get_state()
         data = logic.update(data, dt)
         data = collision.update(data)
+        
         state.set_state(data)
         render.draw(data)
 

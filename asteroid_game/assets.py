@@ -4,12 +4,12 @@ class Assets():
     def __init__(self):
         """player"""
         player = pygame.image.load("asteroid_game/assets/Ship_4.png")
-        self.player = pygame.transform.scale(player, (100, 100))
+        self.player = pygame.transform.scale(player, (80, 80))
         self.player_rect = self.player.get_rect()
 
         """shot"""
         shot = pygame.image.load("asteroid_game/assets/Shot.png")
-        self.shot = pygame.transform.scale(shot, (70, 70))
+        self.shot = pygame.transform.scale(shot, (60, 60))
         self.shot_rect = self.shot.get_rect()
         
 
@@ -76,7 +76,6 @@ class Assets():
         size_idx = int(split_id[1]) - 1
         return idx, size_idx
 
-     
     def get_img(self, sprite_id):
         if "spaceship" in sprite_id:
             return self.player
