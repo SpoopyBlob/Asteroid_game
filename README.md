@@ -57,23 +57,3 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 3. Performance Optimisation:
    1. Implementing a sprite_lookup hashmap to optimise collision detection
    2. Pre-caching assets to reduce overhead by managing resources in a dedicated module
-
-
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
