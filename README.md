@@ -24,11 +24,13 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 ### Installation & Run
 
 1. **Clone the repository:**
+   
    git clone github.com/SpoopyBlob/Asteroid_game
    
    cd Asteroid_game
    
-3. **Run the game:**
+2. **Run the game:**
+   
    uv run main.py
 
    This command will automatically install **pygame**, create a virtual environment and launch the game for you
@@ -55,6 +57,7 @@ Features marked with `[ ]` are planned for future updates.
    2. Pre-caching assets to reduce overhead by managing resources in a dedicated module
 
       
+
 
 
 
