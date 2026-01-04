@@ -12,15 +12,23 @@ The easiest way to run the game is using **uv**. You don't need Python installed
 
 ### Prerequisites
 
-First, install **uv**
+First, install **uv**. This handles all dependencies and Python versions for you.
+
+**windows(powershell)**
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+**macOS/Linux(curl)**
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 
 ### Installation & Run
 
 1. **Clone the repository:**
    git clone github.com/SpoopyBlob/Asteroid_game
+   
    cd Asteroid_game
    
-2. **Run the game:**
+3. **Run the game:**
    uv run main.py
 
    This command will automatically install **pygame**, create a virtual environment and launch the game for you
@@ -47,6 +55,7 @@ Features marked with `[ ]` are planned for future updates.
    2. Pre-caching assets to reduce overhead by managing resources in a dedicated module
 
       
+
 
 
 
