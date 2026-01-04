@@ -1,4 +1,4 @@
-# Asteroid Game(WIP) started 01/01/2026
+# 🚀 Asteroid Game(WIP) started 01/01/2026
 
 A fast-paced space shooter game built using Python and the Pygame library
 
@@ -38,7 +38,7 @@ Features marked with `[ ]` are planned for future updates.
 -   [ ] High score/points system
 -   [ ] Main menu and Game Over screens
 
-## Technical notes:
+## ⚙️ Technical notes:
 
 1. Experimenting with implementing concepts from functional programming into OOP. 
 2. Functional Core/ Imperative Shell: I am working to separate the games' "pure logic" from the imperative side effects, allowing for easier debugging and unit testing
@@ -47,6 +47,7 @@ Features marked with `[ ]` are planned for future updates.
    2. Pre-caching assets to reduce overhead by managing resources in a dedicated module
 
       
+
 
 
 
