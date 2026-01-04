@@ -7,9 +7,16 @@ class Collision():
         self.assets = Assets()
     
     def update(self, state):
-        self.out_of_bounds_check(state)
+        #checks for sprites off screen, flags them for deletion
+        state = self.out_of_bounds_check(state.copy())
+        
+        #soft collision check, checks rect objects first (AABB collisions)
+        #rects are less resource heavy then masks
         collisions = self.soft_collision_check(state)
-        self.mask_collision_check(collisions, state)
+
+        #check for mask collisions (masks provide pixel perfect collision detection)
+        state = self.mask_collision_check(collisions, state.copy())
+
         return state
     
     def out_of_bounds_check(self, state):
@@ -22,6 +29,8 @@ class Collision():
             if pos.y < -OUT_OF_BOUNDS_LIMIT or pos.y > SCREEN_HEIGHT + OUT_OF_BOUNDS_LIMIT:
                 state[sprite_id].alive = False
                 continue
+        
+        return state
 
     def soft_collision_check(self, state):
         collision = []
@@ -45,7 +54,7 @@ class Collision():
                             
                         collision.append((sprite, sprite_2))   
 
-        return collision                            
+        return tuple(collision)                            
 
     def mask_collision_check(self, collisions, state):
         for col in collisions:
@@ -85,6 +94,8 @@ class Collision():
             if mask_2.overlap(mask_1, offset) is not None:
                 state[col[0]].col_type = col[1]
                 state[col[1]].col_type = col[0]
+
+        return state
 
         
 

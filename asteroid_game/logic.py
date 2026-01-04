@@ -8,29 +8,34 @@ class Logic():
         self.entity_manager = Entity_Manager()
 
     def update(self, state, dt):
-        #retrieves and modifies behaviour from entity manager and calculates new x y
+        #handles flagged collisions, calculates new x y
         state = self.collision_calc(state.copy())
         
-        #clears sprites no longer in use
+        #clears sprites from state, no longer in use
         state = self.clear_inactive_entities(state.copy())
         
-        #updates all sprites
+        #updates all sprites in entity_manager
         self.entity_manager.update(dt)
 
-        #retrieved metadate from entity manager to update state
+        #retrieves metadate from entity manager to update state
         metadate = self.entity_manager.get_entity_metadate()
 
         #creates state objects for new sprites if needed
-        state = self.update_state(metadate, state.copy())
+        state = self.prep_state(metadate, state.copy())
 
-        #update .pos for entities based on velocity
+        #update .pos for entities based on velocity (.rot for entities requiring rotation variable)
+        state = self.update_state(state.copy(), metadate, dt)
+
+        return state
+
+    def update_state(self, state, metadate, dt):
         for sprite_id, date in metadate.items():
 
             if "spaceship" in sprite_id or "shot" in sprite_id:
                 state[sprite_id].rot = date["rot"]
             state[sprite_id].pos += (date["vel"] * dt) 
 
-        return state
+        return state        
 
     def return_player_id(self):
         return self.entity_manager.get_player_id()
@@ -38,7 +43,7 @@ class Logic():
     def init_player(self):
         return Sprite_Metadata(self.return_player_id(), 640, 360)
     
-    def update_state(self, metadate, state):
+    def prep_state(self, metadate, state):
         for sprite in metadate:
             if sprite not in state:
                 if "shot" in sprite:
@@ -63,7 +68,7 @@ class Logic():
                 del state[sprite_id]
         
         return state
-    
+    #finds collisions flagged in state + reset col_type to "n/a" for next game loop
     def col_check(self, state):
         col = []
         for sprite_id in state:

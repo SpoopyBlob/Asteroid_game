@@ -20,6 +20,7 @@ class Assets():
 
         #masks
 
+    
     def load_asteroid_imgs(self):
         asteroid_sheet = pygame.image.load("asteroid_game/assets/asteroids.png")
         
@@ -30,8 +31,9 @@ class Assets():
                     break
                 rect = pygame.Rect(col * 128, row * 128, 128, 128)
                 image = asteroid_sheet.subsurface(rect)
+                image = pygame.transform.scale(image, (110, 110))
                 smaller_image = pygame.transform.scale(image, (70, 70))
-                larger_image = pygame.transform.scale(image, (130, 130))
+                larger_image = pygame.transform.scale(image, (150, 150))
                 asteroid_images.append((smaller_image, image, larger_image))
 
         return tuple(asteroid_images)

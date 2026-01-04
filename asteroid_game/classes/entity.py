@@ -2,6 +2,7 @@ import pygame
 import uuid
 from asteroid_game.config import *
 
+
 class Entity(pygame.sprite.Sprite):
     register = {}
 

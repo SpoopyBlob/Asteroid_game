@@ -36,10 +36,8 @@ class Entity_Manager():
         return self.player.sprite_id
     
     def del_entity(self, sprite_id):
-        for entity in self.entities:
-            if entity.sprite_id == sprite_id:
-                self.entities.remove(entity)
-                del entity
+        sprite = self.player.find_sprite(sprite_id)
+        sprite.kill()
            
     def handle_sprite_collisions(self, col):
         #split_collisions is when an asteroid splits into two
@@ -67,11 +65,6 @@ class Entity_Manager():
                 split_collisions.append(event_2)
                 sprites_to_kill.add(sprite_2.sprite_id)
                                                       
-        for sprite_id in sprites_to_kill:
-            
-            sprite = self.player.find_sprite(sprite_id)
-            sprite.kill()
-
         return tuple(split_collisions), tuple(sprites_to_kill)
 
             
