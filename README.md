@@ -19,15 +19,6 @@ Features marked with `[ ]` are planned for future updates.
 -   [ ] High score/points system
 -   [ ] Main menu and Game Over screens
 
-## ⚙️ Technical notes:
-
-1. Experimenting with implementing concepts from functional programming into OOP. 
-2. Functional Core/ Imperative Shell: I am working to separate the games' "pure logic" from the imperative side effects, allowing for easier debugging and unit testing
-3. Performance Optimisation:
-   1. Implementing a sprite_lookup hashmap to optimise collision detection
-   2. Pre-caching assets to reduce overhead by managing resources in a dedicated module
-
-
 ## Getting Started
 
 The easiest way to run the game is using **uv**. You don't need Python installed, **uv** handles everything.
@@ -59,8 +50,18 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
    This command will automatically install **pygame**, create a virtual environment and launch the game for you
 
+## ⚙️ Technical notes:
+
+1. Experimenting with implementing concepts from functional programming into OOP. 
+2. Functional Core/ Imperative Shell: I am working to separate the games' "pure logic" from the imperative side effects, allowing for easier debugging and unit testing
+3. Performance Optimisation:
+   1. Implementing a sprite_lookup hashmap to optimise collision detection
+   2. Pre-caching assets to reduce overhead by managing resources in a dedicated module
+
+
 
       
+
 
 
 
