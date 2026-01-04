@@ -50,7 +50,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
    This command will automatically install **pygame**, create a virtual environment and launch the game for you
 
-##⚙️ Technical notes:
+## ⚙️ Technical notes:
 
 1. Experimenting with implementing concepts from functional programming into OOP. 
 2. Functional Core/ Imperative Shell: I am working to separate the games' "pure logic" from the imperative side effects, allowing for easier debugging and unit testing
@@ -61,6 +61,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 
       
+
 
 
 
