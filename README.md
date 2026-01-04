@@ -14,7 +14,7 @@ The easiest way to run the game is using **uv**. You don't need Python installed
 
 First, install **uv**
 
-### Installation * Run
+### Installation & Run
 
 1. **Clone the repository:**
    git clone github.com/SpoopyBlob/Asteroid_game
@@ -47,6 +47,7 @@ Features marked with `[ ]` are planned for future updates.
    2. Pre-caching assets to reduce overhead by managing resources in a dedicated module
 
       
+
 
 
 
