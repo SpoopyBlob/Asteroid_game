@@ -1,7 +1,3 @@
-#research functional core, imperative shell designs, ensure main game loop represents that
-#write unit tests for collisions, logic, state (if possible), assets and render
-#write a good read_me for git_hub
-
 import pygame
 from asteroid_game.state import State
 from asteroid_game.render import Render
