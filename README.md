@@ -42,7 +42,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
    
    git clone github.com/SpoopyBlob/Asteroid_game
    
-   cd Asteroid_game
+   cd asteroid_game
    
 2. **Run the game:**
    
@@ -61,6 +61,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 
       
+
 
 
 
