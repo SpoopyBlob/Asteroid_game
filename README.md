@@ -14,11 +14,11 @@ The easiest way to run the game is using **uv**. You don't need Python installed
 
 First, install **uv**. This handles all dependencies and Python versions for you.
 
-**windows(powershell)**
+**windows(powershell):**
 
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 
-**macOS/Linux(curl)**
+**macOS/Linux(curl):**
 
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
@@ -59,6 +59,7 @@ Features marked with `[ ]` are planned for future updates.
    2. Pre-caching assets to reduce overhead by managing resources in a dedicated module
 
       
+
 
 
 
