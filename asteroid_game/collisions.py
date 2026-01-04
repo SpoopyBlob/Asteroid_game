@@ -11,7 +11,7 @@ class Collision():
         state = self.out_of_bounds_check(state.copy())
         
         #soft collision check, checks rect objects first (AABB collisions)
-        #rects are less resource heavy then masks
+        #why?: rects are less resource heavy then masks
         collisions = self.soft_collision_check(state)
 
         #check for mask collisions (masks provide pixel perfect collision detection)
@@ -35,10 +35,15 @@ class Collision():
     def soft_collision_check(self, state):
         collision = []
         for sprite in state:
+            if state[sprite].alive == False:
+                continue
+
             sprite_rect = self.assets.get_rect(sprite)
             sprite_rect.center = state[sprite].pos
 
             for sprite_2 in state:
+                if state[sprite_2].alive == False:
+                    continue
 
                 if sprite == sprite_2:
                     continue

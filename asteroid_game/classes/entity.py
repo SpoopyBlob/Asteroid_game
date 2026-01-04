@@ -4,6 +4,7 @@ from asteroid_game.config import *
 
 
 class Entity(pygame.sprite.Sprite):
+    #register is used for quick O(1) lookup for sprites, avoids wasteful loops.
     register = {}
 
     def __init__(self):
@@ -16,11 +17,6 @@ class Entity(pygame.sprite.Sprite):
         self.velocity = pygame.Vector2(0, 0)
         self.sprite_id = str(uuid.uuid4())
         Entity.register[self.sprite_id] = self
-    
-        #I use information from the sprite_id to identify type of sprite; for asteroids type_of_asteroid + size + asteroid
-        #e.g. 22_3_asteroid_(id goes here) 22 = index for asteroid sprite, 3 = size | spaceship_(id_goes_here) etc...
-        #I use sprite_id to identify specific sprites through the entire game loop and match them with their state object
-        #For quick retrieveal of sprite objects we use the register a class variable (used mainly for collisions)
     
     def update(self, dt):
         if self.col_exempt > 0:

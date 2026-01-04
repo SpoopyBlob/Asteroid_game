@@ -4,10 +4,6 @@ from asteroid_game.render import Render
 from asteroid_game.logic import Logic
 from asteroid_game.collisions import Collision
 
-
-#temp
-from asteroid_game.state import Sprite_Metadata
-
 def main():
     dt = 0
     clock = pygame.time.Clock()
@@ -23,12 +19,12 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-            
+        
         data = state.get_state()
         data = logic.update(data, dt)
         data = collision.update(data)
         state.set_state(data)
-        
+
         render.draw(data)
 
         dt = clock.tick(60) / 1000

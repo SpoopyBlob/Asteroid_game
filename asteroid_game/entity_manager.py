@@ -1,3 +1,5 @@
+#todo: not happy with collision behaviour, col_exempt is temp fix
+
 import pygame
 from asteroid_game.classes.spaceship import Spaceship
 from asteroid_game.classes.entity import Entity
@@ -5,13 +7,21 @@ from asteroid_game.classes.asteroid_spawn import Asteroid_Spawn
 
 class Entity_Manager():
     def __init__(self):
+        #pygroup representing all sprites
         self.entities = pygame.sprite.Group()
         Entity.entities = self.entities
+
+        #player entity
         self.player = Spaceship()
+
+        #asteroid spawning system
         self.asteroid_spawn = Asteroid_Spawn()
 
     def update(self, dt):
+        #updates individual entity sprites
         self.entities.update(dt)
+        
+        #used to spawn asteroids
         self.asteroid_spawn.update(dt)
 
     def get_entity_metadate(self):
@@ -40,9 +50,9 @@ class Entity_Manager():
         sprite.kill()
            
     def handle_sprite_collisions(self, col):
-        #split_collisions is when an asteroid splits into two
-        #we need to communicate with the logic module in this cirumstance as we need to alter the .pos vector in state
-        #same goes for sprites_to_kill, we need to comunicate with state
+        # split_collisions is when an asteroid splits into two
+        # we need to communicate with the logic module in this circumstance as we need to alter the .pos vector in state
+        # same goes for sprites_to_kill, we need to communicate with state
         split_collisions = []
         sprites_to_kill = set()
         

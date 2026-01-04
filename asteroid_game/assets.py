@@ -12,15 +12,12 @@ class Assets():
         self.shot = pygame.transform.scale(shot, (60, 60))
         self.shot_rect = self.shot.get_rect()
         
-
         """asteroid"""
         self.asteroid_images = self.load_asteroid_imgs()
         self.asteroid_rects = self.load_asteroid_rects()
         self.asteroid_masks = self.load_asteroid_masks()
 
-        #masks
-
-    
+    #transforms a sprite sheet into individual sprite imgs
     def load_asteroid_imgs(self):
         asteroid_sheet = pygame.image.load("asteroid_game/assets/asteroids.png")
         
@@ -31,13 +28,14 @@ class Assets():
                     break
                 rect = pygame.Rect(col * 128, row * 128, 128, 128)
                 image = asteroid_sheet.subsurface(rect)
-                image = pygame.transform.scale(image, (110, 110))
+                image = pygame.transform.scale(image, (100, 100))
                 smaller_image = pygame.transform.scale(image, (70, 70))
-                larger_image = pygame.transform.scale(image, (150, 150))
+                larger_image = pygame.transform.scale(image, (130, 130))
                 asteroid_images.append((smaller_image, image, larger_image))
 
         return tuple(asteroid_images)
     
+    #transforms sprite imgs into rect objects
     def load_asteroid_rects(self):
         asteroid_rects = []
 
@@ -49,6 +47,7 @@ class Assets():
 
         return tuple(asteroid_rects)
     
+    #transforms sprite imgs into mask objects
     def load_asteroid_masks(self):
         asteroid_masks = []
 
@@ -59,6 +58,13 @@ class Assets():
             asteroid_masks.append(tuple(new_tup))
         
         return tuple(asteroid_masks)
+    
+    """Helper Methods"""
+    #Sprite_id is used to identify individual sprites and their specific types.
+    #For example, spaceship_(id_goes_here).
+
+    #Asteroid sprite_ids have a third function: they store metadata for asset type and scale.
+    #For example, 22_2_asteroid_(id_goes_here) -> index 22 of asteroid_imgs, asteroid size = 2.
 
     def get_asteroid_img(self, sprite_id):
         idx, size_idx = self.ast_id_to_index(sprite_id)

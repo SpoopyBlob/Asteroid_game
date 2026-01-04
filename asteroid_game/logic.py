@@ -40,9 +40,11 @@ class Logic():
     def return_player_id(self):
         return self.entity_manager.get_player_id()
     
+    #creates state object for player: Used in main before game loop
     def init_player(self):
         return Sprite_Metadata(self.return_player_id(), 640, 360)
     
+
     def prep_state(self, metadate, state):
         for sprite in metadate:
             if sprite not in state:
@@ -84,8 +86,12 @@ class Logic():
         if len(col) == 0:
             return state
         
+        # executes collision behaviour on sprites
         split, kill = self.entity_manager.handle_sprite_collisions(col)
-        
+        # split = when an asteroid splits into two new asteroids
+        # kill = when an entity has died
+        # we communicate only these two instances as it requires updating the state
+            
         if split != None:
             for sprites in split:
             
