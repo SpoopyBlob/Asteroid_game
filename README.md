@@ -14,7 +14,7 @@ Features marked with `[ ]` are planned for future updates.
 -   [x] Asteroid sprites + spawn behaviour
 -   [x] Collision system + behaviour
 -   [x] Optimisation (pre-cache assets, sprite_lookup(dict/hashmap), soft_collision_check) 
--   [ ] Unit tests for "functional core" (logic.py, collisions.py, state.py) due 11/01/2026
+-   [ ] Unit tests for "functional core" (logic.py, collisions.py, state.py)
 -   [ ] Sprite_fx animation for world events
 -   [ ] High score/points system
 -   [ ] Main menu and Game Over screens
@@ -57,3 +57,4 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 3. Performance Optimisation:
    1. Implementing a sprite_lookup hashmap to optimise collision detection
    2. Pre-caching assets to reduce overhead by managing resources in a dedicated module
+
